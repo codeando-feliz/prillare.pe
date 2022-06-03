@@ -1,3 +1,10 @@
+:root {
+    --main-black: #0F0F0F;
+    --main-white: #F6F6F6;
+    --main-dark-yellow: #D1B540;
+    --main-ligth-yellow: #F2DF6B;
+}
+
 main {
     min-height: 80vh;
 }
@@ -6,6 +13,32 @@ h3 {
     padding: 1rem 0;
 }
 
+.btn-back:hover {
+    background-color: #f0f0f0;
+    color: var(--main-black);
+}
+
+.btn-dark {
+    background-color: var(--main-black);
+    color: var(--main-white);
+}
+
+.btn-dark:hover {
+    background-color: var(--main-dark-yellow);
+    color: var(--main-black);
+}
+
+
 .rating span {
     margin: 0.1rem;
 }
+
+.navbar-dark {
+    background-color: var(--main-black);
+}
+
+/*
+Agrandir Thin
+Alata
+Playlist Script
+*/
