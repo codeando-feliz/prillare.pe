@@ -14,6 +14,6 @@ JSON Web Token (JWT) is a compact URL-safe means of representing claims to be tr
 
 Header + Payload + Signature
 
-![JWT](https://github.com/the-code-loops/prillare.pe/tree/dev/src/jwt.png)
+![JWT](https://github.com/the-code-loops/prillare.pe/blob/dev/src/jwt.png)
 
 [Read More](https://medium.com/@sureshdsk/how-json-web-token-jwt-authentication-works-585c4f076033)
