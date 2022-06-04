@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Row,
@@ -14,10 +14,11 @@ import {
 import Rating from "../components/Rating";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import { addToCart } from "../actions/cartActions";
 import { listProductDetails } from "../actions/productActions";
 
 const ProductScreen = ({ match }) => {
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
   let navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -31,8 +32,10 @@ const ProductScreen = ({ match }) => {
   }, [dispatch, match]);
 
   const addToCartHandler = () => {
-    navigate(`/cart/${id}?qty=${qty}`);
-  }
+    dispatch(addToCart(id, qty));
+    navigate("/cart");
+    /* navigate(`/cart/${id}?qty=${qty}`); */
+  };
 
   return (
     <>
@@ -94,15 +97,13 @@ const ProductScreen = ({ match }) => {
                         <Form.Control
                           as="select"
                           value={qty}
-                          onChange={(e) => setQty(e.target.value)}
+                          onChange={(e) => setQty(Number(e.target.value))}
                         >
-                        {
-                          [...Array(product.countInStock).keys()].map(x => (
-                            <option key={x+1} value={x+1}>
+                          {[...Array(product.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
                               {x + 1}
                             </option>
-                          ))
-                        }
+                          ))}
                         </Form.Control>
                       </Col>
                     </Row>
@@ -110,8 +111,7 @@ const ProductScreen = ({ match }) => {
                 )}
 
                 <ListGroup.Item>
-
-                <Button
+                  <Button
                     onClick={addToCartHandler}
                     className="btn-dark w-100"
                     type="button"
@@ -119,8 +119,6 @@ const ProductScreen = ({ match }) => {
                   >
                     Añadir al carrito
                   </Button>
-         
-                  
                 </ListGroup.Item>
               </ListGroup>
             </Card>
